@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>License Redeemer Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 22px;
+            color: #4C6E7B;
+            margin-bottom: 20px;
+        }
+        .product-image {
+            width: 100%;
+            height: auto;
+            max-width: 250px;
+            margin: 0 auto 15px;
+        }
+        .license-section {
+            margin-bottom: 20px;
+        }
+        .license-code {
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 100%;
+            font-family: monospace;
+            font-size: 14px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .button {
+            background-color: #4C6E7B;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #3f5b6e;
+        }
+        .download-section {
+            display: none;
+            margin-top: 20px;
+        }
+        .download-link {
+            color: #4C6E7B;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .download-link:hover {
+            text-decoration: underline;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .success {
+            color: green;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>License Redeemer</h1>
+        <div class="product-section">
+            <img src="https://imagedelivery.net/HL_Fwm__tlvUGLZF2p74xw/53917ab9-fd0c-4431-24bc-7b8d0f398a00/public" alt="Product Image" class="product-image">
+        </div>
+
+        <div class="license-section">
+            <input type="text" id="licenseInput" placeholder="Enter license code" class="license-code">
+            <button class="button" onclick="redeemLicense()">Redeem</button>
+            <div id="licenseStatus" class="error"></div>
+        </div>
+
+        <div class="download-section" id="downloadSection">
+            <a href="https://imagedelivery.net/HL_Fwm__tlvUGLZF2p74xw/53917ab9-fd0c-4431-24bc-7b8d0f398a00/public" class="download-link" download>Download File</a>
+        </div>
+    </div>
+
+    <script>
+        const validLicenses = [
+            'FH-EXTERNAL-0QM9W9-9LC0WA-C3MB-9LFU-91',
+            'FH-EXTERNAL-J7B9AA-UGQ5UB-0PYE-X8P4-O6',
+            'FH-EXTERNAL-FYVO97-IEE8I7-7LSD-PI3N-63',
+            'FH-EXTERNAL-W3GJWV-4V0VL5-39H6-PWK2-KQ',
+            'FH-EXTERNAL-1UOYL0-Y4NQ5B-RW9G-Y0ED-0N',
+            'FH-EXTERNAL-LM7SHX-Z6C9Y1-HU2L-EGN1-ZM',
+            'FH-EXTERNAL-TK2UTU-FYAAYK-LSCJ-DUVB-2Z',
+            'FH-EXTERNAL-R9YJ7W-568U29-DWOF-VYEH-1P',
+            'FH-EXTERNAL-AGV3ZM-XNFFQL-T92I-54UU-BF',
+            'FH-EXTERNAL-2MPMB9-U29T38-4G1N-1925-YK'
+        ];
+
+        function redeemLicense() {
+            const licenseInput = document.getElementById('licenseInput').value;
+            const licenseStatus = document.getElementById('licenseStatus');
+            const downloadSection = document.getElementById('downloadSection');
+
+            if (validLicenses.includes(licenseInput)) {
+                licenseStatus.classList.remove('error');
+                licenseStatus.classList.add('success');
+                licenseStatus.innerHTML = 'License Redeemed Successfully!';
+                downloadSection.style.display = 'block';
+            } else {
+                licenseStatus.classList.remove('success');
+                licenseStatus.classList.add('error');
+                licenseStatus.innerHTML = 'Invalid License Code';
+                downloadSection.style.display = 'none';
+            }
+        }
+    </script>
+    
+</body>
+</html>
